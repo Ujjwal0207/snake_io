@@ -116,11 +116,15 @@ class SnakeGame:
         if (new_head[0] < 0 or new_head[0] >= self.grid_size or
                 new_head[1] < 0 or new_head[1] >= self.grid_size):
             self.done = True
+            self.snake.insert(0, new_head)
+            self.snake.pop()
             return self.get_state(), -10.0, True, self.score
 
         # --- Check self collision (exclude tail since it will move) ---
         if new_head in self.snake[:-1]:
             self.done = True
+            self.snake.insert(0, new_head)
+            self.snake.pop()
             return self.get_state(), -10.0, True, self.score
 
         # Move snake: insert new head
