@@ -62,6 +62,12 @@ def main():
     # --- Initialize components ---
     game = SnakeGame(grid_size)
     agent = Agent(lr=0.001, gamma=0.9)
+
+    # Attempt to load a pre-trained model
+    if agent.load("model/snake_dqn.pth"):
+        print("✅ Loaded pre-trained model! The AI is already smart.")
+        agent.n_games = 150  # Fast-forward so epsilon is low (0.01)
+
     renderer = GameRenderer(grid_size)
 
     # --- Training settings ---
