@@ -7,3 +7,4 @@ model/
 venv/
 env/
 .env
+PROJECT_EXPLANATION.md
